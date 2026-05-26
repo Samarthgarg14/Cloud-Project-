@@ -60,7 +60,7 @@ def test_bankers_algorithm_safe(client):
     payload = {
       "processes": ["P0", "P1"],
       "available": [3, 3],
-      "max": [[7, 5], [3, 2]],
+      "max": [[3, 2], [3, 2]],
       "allocation": [[0, 1], [2, 0]]
     }
     rv = client.post('/api/bankers', 
