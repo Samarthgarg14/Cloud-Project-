@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Simulator - Deadlock Visualizer{% endblock %}
+
+{% block content %}
+<div class="simulator-header">
+    <h2>Deadlock <span class="highlight">Simulator</span></h2>
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('rag-tab')">RAG & WFG</button>
+        <button class="tab-btn" onclick="switchTab('bankers-tab')">Banker's Algorithm</button>
+    </div>
+</div>
+
+<!-- RAG & WFG Tab -->
+<div id="rag-tab" class="tab-content active">
+    <div class="simulator-grid">
+        <div class="control-panel glass-panel">
+            <h3>Graph Controls</h3>
+            <div class="control-group">
+                <label>Add Node:</label>
+                <div class="input-row">
+                    <input type="text" id="node-id" placeholder="ID (e.g. P1, R1)">
+                    <select id="node-type">
+                        <option value="process">Process</option>
+                        <option value="resource">Resource</option>
+                    </select>
+                    <button class="btn btn-secondary" onclick="addNode()">Add</button>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label>Add Edge (Request / Assignment):</label>
+                <div class="input-row">
+                    <input type="text" id="edge-source" placeholder="Source ID">
+                    <span style="color:var(--text-muted)">→</span>
+                    <input type="text" id="edge-target" placeholder="Target ID">
+                    <button class="btn btn-secondary" onclick="addEdge()">Add</button>
+                </div>
+                <small class="help-text">Process → Resource = Request<br>Resource → Process = Assignment</small>
+            </div>
+
+            <div class="control-group actions">
+                <button class="btn btn-primary glow-effect" onclick="checkDeadlock()">Detect Deadlock</button>
+                <button class="btn btn-danger" onclick="clearGraph()">Clear Graph</button>
+            </div>
+
+            <div class="log-panel" id="rag-log">
+                <h4>System Logs</h4>
+                <div id="rag-log-content" class="log-content">System ready. Add nodes and edges to begin.</div>
+            </div>
+        </div>
+        
+        <div class="visualization-panel glass-panel">
+            <div id="d3-container"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Banker's Algorithm Tab -->
+<div id="bankers-tab" class="tab-content">
+    <div class="simulator-grid bankers-grid">
+        <div class="control-panel glass-panel">
+            <h3>Banker's Setup</h3>
+            <p class="help-text">Define the system state in JSON format to simulate.</p>
+            <textarea id="bankers-input" rows="12" class="code-editor">
+{
+  "processes": ["P0", "P1", "P2", "P3", "P4"],
+  "available": [3, 3, 2],
+  "max": [
+    [7, 5, 3],
+    [3, 2, 2],
+    [9, 0, 2],
+    [2, 2, 2],
+    [4, 3, 3]
+  ],
+  "allocation": [
+    [0, 1, 0],
+    [2, 0, 0],
+    [3, 0, 2],
+    [2, 1, 1],
+    [0, 0, 2]
+  ]
+}</textarea>
+            <button class="btn btn-primary glow-effect mt-2" onclick="runBankers()">Run Algorithm</button>
+        </div>
+        
+        <div class="visualization-panel glass-panel">
+            <h3>Simulation Results</h3>
+            <div id="bankers-results" class="results-container">
+                <p class="text-muted">Run the simulation to see results.</p>
+            </div>
+            
+            <div class="log-panel mt-3">
+                <h4>Step-by-Step Execution</h4>
+                <div id="bankers-log-content" class="log-content terminal-font"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/visualization.js') }}"></script>
+{% endblock %}

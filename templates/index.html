@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Deadlock Visualizer{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Master <span class="highlight">Deadlocks</span> with Real-Time Visualization</h1>
+    <p class="subtitle">An interactive learning tool for Operating Systems students. Explore Resource Allocation Graphs, Wait-For Graphs, and the Banker's Algorithm with stunning cyberpunk aesthetics.</p>
+    
+    <div class="cta-container">
+        <a href="{{ url_for('simulator') }}" class="btn btn-primary glow-effect">Enter Simulator</a>
+    </div>
+</div>
+
+<div class="features-grid">
+    <div class="feature-card glass-panel">
+        <div class="icon">🕸️</div>
+        <h3>Graph Models</h3>
+        <p>Visualize Resource Allocation Graphs (RAG) and Wait-For Graphs (WFG). See how processes request and hold resources dynamically.</p>
+    </div>
+    
+    <div class="feature-card glass-panel">
+        <div class="icon">🔄</div>
+        <h3>Cycle Detection</h3>
+        <p>Instantly detect deadlocks through cycle detection algorithms in the WFG. Watch as the conflicting paths light up.</p>
+    </div>
+    
+    <div class="feature-card glass-panel">
+        <div class="icon">🏦</div>
+        <h3>Banker's Algorithm</h3>
+        <p>Simulate deadlock avoidance with the Banker's Algorithm. Calculate safe sequences step-by-step.</p>
+    </div>
+</div>
+{% endblock %}
