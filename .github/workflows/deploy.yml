@@ -25,7 +25,7 @@ jobs:
 
       - name: Run Pytest
         run: |
-          pytest tests/
+          python -m pytest tests/
 
   build-and-push:
     name: Build & Push Docker Image
