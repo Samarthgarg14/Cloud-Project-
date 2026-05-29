@@ -17,6 +17,33 @@
     --font-mono: 'JetBrains Mono', monospace;
     
     --panel-border: rgba(0, 240, 255, 0.15);
+
+    /* Graph specific */
+    --d3-bg-start: rgba(16,18,27,1);
+    --d3-bg-end: rgba(5,5,10,1);
+    --node-process-fill: #0f3460;
+    --node-resource-fill: #4a0e17;
+}
+
+[data-theme="light"] {
+    --bg-dark: #f4f7f6;
+    --bg-panel: rgba(255, 255, 255, 0.85);
+    --primary: #005f73;
+    --primary-glow: rgba(0, 95, 115, 0.3);
+    --secondary: #9b2226;
+    --secondary-glow: rgba(155, 34, 38, 0.3);
+    --accent: #ee9b00;
+    --text-main: #2b2d42;
+    --text-muted: #6c757d;
+    --danger: #d90429;
+    --success: #2a9d8f;
+    
+    --panel-border: rgba(0, 95, 115, 0.2);
+
+    --d3-bg-start: #e9ecef;
+    --d3-bg-end: #dee2e6;
+    --node-process-fill: #94d2bd;
+    --node-resource-fill: #e5989b;
 }
 
 * {
@@ -476,7 +503,7 @@ input:focus, select:focus, textarea:focus {
 
 #d3-container {
     flex: 1;
-    background: radial-gradient(circle at center, rgba(16,18,27,1) 0%, rgba(5,5,10,1) 100%);
+    background: radial-gradient(circle at center, var(--d3-bg-start) 0%, var(--d3-bg-end) 100%);
     border-radius: 8px;
     border: 1px solid var(--panel-border);
     overflow: hidden;
@@ -495,12 +522,12 @@ input:focus, select:focus, textarea:focus {
     cursor: grabbing;
 }
 .node.process { 
-    fill: #0f3460; 
+    fill: var(--node-process-fill); 
     stroke: var(--primary);
     filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.4));
 }
 .node.resource { 
-    fill: #4a0e17; 
+    fill: var(--node-resource-fill); 
     stroke: var(--danger); 
     shape-rendering: crispEdges; 
     filter: drop-shadow(0 0 8px rgba(255, 0, 60, 0.4));
