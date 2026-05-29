@@ -18,6 +18,20 @@
     
     --panel-border: rgba(0, 240, 255, 0.15);
 
+    --text-heading: #fff;
+    --nav-bg: rgba(5, 5, 10, 0.8);
+    --input-bg: rgba(5, 5, 10, 0.6);
+    --border-subtle: rgba(255, 255, 255, 0.1);
+    --border-faint: rgba(255, 255, 255, 0.05);
+    --log-bg: rgba(0, 0, 0, 0.5);
+    --table-header-bg: rgba(0, 240, 255, 0.1);
+    --table-cell-bg: rgba(5, 5, 10, 0.4);
+    --footer-bg: rgba(5, 5, 10, 0.8);
+    --node-stroke: #fff;
+    --node-label: #fff;
+    --btn-hover-text: #fff;
+    --shadow-panel: rgba(0, 0, 0, 0.5);
+
     /* Graph specific */
     --d3-bg-start: rgba(16,18,27,1);
     --d3-bg-end: rgba(5,5,10,1);
@@ -39,6 +53,20 @@
     --success: #2a9d8f;
     
     --panel-border: rgba(0, 95, 115, 0.2);
+
+    --text-heading: #1a202c;
+    --nav-bg: rgba(244, 247, 246, 0.9);
+    --input-bg: rgba(255, 255, 255, 0.9);
+    --border-subtle: rgba(0, 0, 0, 0.1);
+    --border-faint: rgba(0, 0, 0, 0.05);
+    --log-bg: rgba(255, 255, 255, 0.7);
+    --table-header-bg: rgba(0, 95, 115, 0.1);
+    --table-cell-bg: rgba(255, 255, 255, 0.6);
+    --footer-bg: rgba(244, 247, 246, 0.9);
+    --node-stroke: #2b2d42;
+    --node-label: #1a202c;
+    --btn-hover-text: #f4f7f6;
+    --shadow-panel: rgba(0, 0, 0, 0.1);
 
     --d3-bg-start: #e9ecef;
     --d3-bg-end: #dee2e6;
@@ -97,7 +125,7 @@ body::after {
 
 /* Typography */
 h1, h2, h3, h4 {
-    color: #fff;
+    color: var(--text-heading);
     font-weight: 800;
     letter-spacing: -0.5px;
     margin-bottom: 1rem;
@@ -133,7 +161,7 @@ h1, h2, h3, h4 {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 4rem;
-    background: rgba(5, 5, 10, 0.8);
+    background: var(--nav-bg);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--panel-border);
     position: sticky;
@@ -246,7 +274,7 @@ h1, h2, h3, h4 {
 }
 .btn-danger:hover {
     background-color: var(--danger);
-    color: #fff;
+    color: var(--btn-hover-text);
     box-shadow: 0 0 25px var(--secondary-glow);
 }
 
@@ -258,7 +286,7 @@ h1, h2, h3, h4 {
     border: 1px solid var(--panel-border);
     border-radius: 12px;
     padding: 2.5rem;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+    box-shadow: 0 15px 35px var(--shadow-panel), inset 0 1px 0 var(--border-faint);
     position: relative;
     overflow: hidden;
 }
@@ -355,7 +383,7 @@ h1, h2, h3, h4 {
 }
 
 .tab-btn:hover {
-    color: #fff;
+    color: var(--text-heading);
 }
 
 .tab-btn.active {
@@ -411,10 +439,10 @@ h1, h2, h3, h4 {
 input[type="text"], select, textarea {
     width: 100%;
     padding: 0.8rem 1rem;
-    background: rgba(5, 5, 10, 0.6);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: var(--input-bg);
+    border: 1px solid var(--border-subtle);
     border-radius: 6px;
-    color: #fff;
+    color: var(--text-main);
     font-family: var(--font-mono);
     font-size: 0.95rem;
     transition: all 0.3s ease;
@@ -456,7 +484,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .log-content {
-    background: rgba(0,0,0,0.5);
+    background: var(--log-bg);
     padding: 1.5rem;
     border-radius: 8px;
     height: 200px;
@@ -471,7 +499,7 @@ input:focus, select:focus, textarea:focus {
     width: 8px;
 }
 .log-content::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.05);
+    background: var(--border-faint);
 }
 .log-content::-webkit-scrollbar-thumb {
     background: var(--panel-border);
@@ -481,7 +509,7 @@ input:focus, select:focus, textarea:focus {
 .log-entry {
     margin-bottom: 0.8rem;
     padding-bottom: 0.8rem;
-    border-bottom: 1px dashed rgba(255,255,255,0.1);
+    border-bottom: 1px dashed var(--border-subtle);
     line-height: 1.5;
 }
 .log-entry:last-child {
@@ -513,7 +541,7 @@ input:focus, select:focus, textarea:focus {
 
 /* SVG D3 Styling */
 .node { 
-    stroke: #fff; 
+    stroke: var(--node-stroke); 
     stroke-width: 2px; 
     cursor: grab; 
     transition: filter 0.3s;
@@ -556,7 +584,7 @@ input:focus, select:focus, textarea:focus {
     filter: drop-shadow(0 0 8px var(--danger)); 
 }
 .node-label { 
-    fill: #fff; 
+    fill: var(--node-label); 
     font-family: var(--font-mono); 
     font-size: 14px; 
     pointer-events: none; 
@@ -579,8 +607,8 @@ input:focus, select:focus, textarea:focus {
 .matrix-table th, .matrix-table td {
     padding: 0.8rem;
     text-align: center;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    border-right: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid var(--border-faint);
+    border-right: 1px solid var(--border-faint);
 }
 .matrix-table tr:last-child td {
     border-bottom: none;
@@ -589,13 +617,13 @@ input:focus, select:focus, textarea:focus {
     border-right: none;
 }
 .matrix-table th {
-    background: rgba(0, 240, 255, 0.1);
+    background: var(--table-header-bg);
     color: var(--primary);
     text-transform: uppercase;
     font-weight: 700;
 }
 .matrix-table td {
-    background: rgba(5, 5, 10, 0.4);
+    background: var(--table-cell-bg);
 }
 
 /* Utility */
@@ -610,6 +638,6 @@ footer {
     font-size: 0.9rem;
     font-family: var(--font-mono);
     border-top: 1px solid var(--panel-border);
-    background: rgba(5, 5, 10, 0.8);
+    background: var(--footer-bg);
     backdrop-filter: blur(10px);
 }
